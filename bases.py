@@ -28,10 +28,20 @@ def decode(digits, base):
     """
     result = 0
     for i, c in enumerate(digits):
-        if i == 0:
-            result += int(c)
-        else:
-            result += (base ** i)*int(c)
+        string = False
+        for ii,cc in enumerate(alpha_numbers):
+            if c == cc:
+                if i == 0:
+                    result += ii+10
+                else:
+                    result += (base ** i)*(ii+10)
+                string = True
+                break
+        if string != True:
+            if i == 0:
+                result += int(c)
+            else:
+                result += (base ** i)*int(c)
     return result
     # TODO: Decode digits from binary (base 2)
     # ...
@@ -94,5 +104,5 @@ def main():
 
 
 if __name__ == '__main__':
-    print(decode("1001", 2))
+    print(decode("FF", 16))
     #main()
