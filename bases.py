@@ -7,7 +7,9 @@ import string
 # string.ascii_uppercase is 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 # string.ascii_letters is ascii_lowercase + ascii_uppercase
 # string.printable is digits + ascii_letters + punctuation + whitespace
-
+alpha_numbers = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+alpha_numbers_lower = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+rune_numers = ['!','@','#','$','%','^','&','*','(',')','~','``','_','-','+','=','[','{',']','}','|',';',':','"',"'",'<',',','>','.','?','/']
 
 def decode(digits, base):
     """Decode given digits in given base to number in base 10.
@@ -16,6 +18,21 @@ def decode(digits, base):
     return: int -- integer representation of number (in base 10)"""
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
+    """Break string into runes
+    Loop through runes
+    If the index is zero, just add the given rune to the result
+    Otherwise, multiply each non-zero by the base to the power of the index,
+    then multiply that result times by given rune
+    if base is greater than ten,
+    add the output of this to the given result
+    """
+    result = 0
+    for i, c in enumerate(digits):
+        if i == 0:
+            result += int(c)
+        else:
+            result += (base ** i)*int(c)
+    return result
     # TODO: Decode digits from binary (base 2)
     # ...
     # TODO: Decode digits from hexadecimal (base 16)
@@ -77,4 +94,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    print(decode("1001", 2))
+    #main()
