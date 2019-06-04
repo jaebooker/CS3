@@ -23,11 +23,11 @@ def decode(digits, base):
     If the index is zero, just add the given rune to the result
     Otherwise, multiply each non-zero by the base to the power of the index,
     then multiply that result times by given rune
-    if base is greater than ten,
+    if base is greater than ten, add ten to its alpha-numeric code (B would equal 2 + 10, C equals 3 + 10, etc.)
     add the output of this to the given result
     """
     result = 0
-    for i, c in enumerate(digits):
+    for i, c in enumerate(digits[::-1]):
         string = False
         for ii,cc in enumerate(alpha_numbers):
             if c == cc:
@@ -77,6 +77,11 @@ def convert(digits, base1, base2):
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base1 <= 36, 'base1 is out of range: {}'.format(base1)
     assert 2 <= base2 <= 36, 'base2 is out of range: {}'.format(base2)
+    """Use Base 10 as a sort of "middle man"
+    Convert the number to base 10, then convert it to second base
+    """
+    base10_num = decode(digits, base1)
+    return encode(base10_num, base2)
     # TODO: Convert digits from base 2 to base 16 (and vice versa)
     # ...
     # TODO: Convert digits from base 2 to base 10 (and vice versa)
@@ -104,5 +109,8 @@ def main():
 
 
 if __name__ == '__main__':
-    print(decode("FF", 16))
+    main()
+    print(decode("AD", 16))
+    print(decode("0010101", 2))
+    print(decode("1001", 10))
     #main()
