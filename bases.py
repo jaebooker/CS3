@@ -109,8 +109,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
-    print(decode("AD", 16))
+    #main()
+    print(decode("ADAA", 16))
     print(decode("00101010", 2))
     print(decode("010010", 8))
     #main()
