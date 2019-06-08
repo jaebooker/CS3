@@ -60,6 +60,21 @@ def encode(number, base):
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
+    remainder = number % base
+    result = str(remainder)
+    num = number - remainder
+    num = num // base
+    while num != 0:
+        num = num // base
+        if num != 0:
+            result += "0"
+        else:
+            result += str(base//base)
+    reverse_result = ""
+    for i, c in enumerate(result[::-1]):
+        reverse_result += c
+    print("exit")
+    print(reverse_result)
     # TODO: Encode number in binary (base 2)
     # ...
     # TODO: Encode number in hexadecimal (base 16)
@@ -110,7 +125,8 @@ def main():
 
 if __name__ == '__main__':
     #main()
-    print(decode("ADAA", 16))
-    print(decode("00101010", 2))
-    print(decode("010010", 8))
+    # print(decode("ADAA", 16))
+    # print(decode("00101010", 2))
+    # print(decode("010010", 8))
+    print(encode(9, 2))
     #main()
