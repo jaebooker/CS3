@@ -15,13 +15,16 @@ class BinaryTreeNode(object):
 
     def is_leaf(self):
         """Return True if this node is a leaf (has no children)."""
-        # TODO: Check if both left child and right child have no value
-        return ... and ...
+        if (self.left.data == None) and (self.right.data == None):
+            return True
+        return False
 
     def is_branch(self):
         """Return True if this node is a branch (has at least one child)."""
         # TODO: Check if either left child or right child has a value
-        return ... or ...
+        if (self.left.data != None) or (self.right.data != None):
+            return True
+        return False
 
     def height(self):
         """Return the height of this node (the number of edges on the longest
