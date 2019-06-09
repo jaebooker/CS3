@@ -22,9 +22,8 @@ def linear_search_recursive(array, item, index=0):
     if item == array[index]:
         return index
     index += 1
-    linear_search_recursive(array, item, index)
+    return linear_search_recursive(array, item, index)
     # TODO: implement linear search recursively here
-    pass
     # once implemented, change linear_search to call linear_search_recursive
     # to verify that your recursive implementation passes all tests
 

@@ -60,16 +60,11 @@ def encode(number, base):
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
-    remainder = number % base
-    result = str(remainder)
-    num = number - remainder
-    num = num // base
+    result = ""
+    num = number
     while num != 0:
+        result += str(num % base)
         num = num // base
-        if num != 0:
-            result += "0"
-        else:
-            result += str(base//base)
     reverse_result = ""
     for i, c in enumerate(result[::-1]):
         reverse_result += c
