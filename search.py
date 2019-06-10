@@ -69,3 +69,4 @@ def binary_search_recursive(array, item):
     # to verify that your recursive implementation passes all tests
 print(binary_search_recursive([1,2,3,4,5], 5))
 print(binary_search_iterative([1,2,3,4,5], 5))
+print(binary_search_iterative(["Alpha","Bear","Cockey","Dat","Winnie"], "Winnie"))
