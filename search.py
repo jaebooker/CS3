@@ -47,7 +47,7 @@ def binary_search_iterative(array, item):
         elif item < array[len(array) // 2]:
             array = array[0:(len(array)//2)]
         elif item == array[len(array) // 2]:
-            return array[len(array) // 2]
+            return len(array) // 2
         else:
             return None
     # once implemented, change binary_search to call binary_search_iterative
@@ -63,7 +63,7 @@ def binary_search_recursive(array, item):
     elif item < array[len(array) // 2]:
         return binary_search_recursive(array[0:(len(array)//2)], item)
     elif item == array[len(array) // 2]:
-        return array[len(array) // 2]
+        return len(array) // 2
     return None
     # once implemented, change binary_search to call binary_search_recursive
     # to verify that your recursive implementation passes all tests
