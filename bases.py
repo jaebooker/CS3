@@ -68,8 +68,7 @@ def encode(number, base):
     reverse_result = ""
     for i, c in enumerate(result[::-1]):
         reverse_result += c
-    print("exit")
-    print(reverse_result)
+    return reverse_result
     # TODO: Encode number in binary (base 2)
     # ...
     # TODO: Encode number in hexadecimal (base 16)
