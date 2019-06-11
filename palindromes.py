@@ -1,6 +1,7 @@
 #!python
 
 import string
+import re
 # Hint: Use these string constants to ignore capitalization and/or punctuation
 # string.ascii_lowercase is 'abcdefghijklmnopqrstuvwxyz'
 # string.ascii_uppercase is 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -35,6 +36,8 @@ def is_palindrome_iterative(text):
 def is_palindrome_recursive(text, left=None, right=None):
     # TODO: implement the is_palindrome function recursively here
     if left is None:
+        regex = re.compile('[^a-zA-Z]')
+        text = regex.sub('', text)
         text = text.upper()
         left = 0
         right = len(text)-1
@@ -64,4 +67,4 @@ def main():
 
 if __name__ == '__main__':
     #print(is_palindrome_iterative("talcat"))
-    print(is_palindrome_recursive("TACOcat", left=None, right=None))
+    print(is_palindrome_recursive("TAC!!!Oc      at", left=None, right=None))
