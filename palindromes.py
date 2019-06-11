@@ -19,7 +19,7 @@ def is_palindrome(text):
 
 def is_palindrome_iterative(text):
     # TODO: implement the is_palindrome function iteratively here
-    text.upper()
+    text = text.upper()
     thing_1 = 0
     thing_2 = len(text)-1
     while thing_1 < thing_2:
@@ -35,6 +35,7 @@ def is_palindrome_iterative(text):
 def is_palindrome_recursive(text, left=None, right=None):
     # TODO: implement the is_palindrome function recursively here
     if left is None:
+        text = text.upper()
         left = 0
         right = len(text)-1
     if text[left] != text[right]:
@@ -63,4 +64,4 @@ def main():
 
 if __name__ == '__main__':
     #print(is_palindrome_iterative("talcat"))
-    print(is_palindrome_recursive("tacoocatt", left=None, right=None))
+    print(is_palindrome_recursive("TACOcat", left=None, right=None))
