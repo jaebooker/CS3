@@ -27,7 +27,22 @@ def find_index(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_index here (iteratively and/or recursively)
-
+    counter = 0
+    while counter < len(text):
+        if text[counter] == pattern[0]:
+            pattern_checker = 1
+            new_index = counter
+            new_counter = counter + 1
+            while pattern_checker < len(pattern):
+                if text[new_counter] == pattern[pattern_checker]:
+                    pattern_checker += 1
+                    new_counter += 1
+                else:
+                    break
+            if pattern_checker == len(pattern):
+                return new_index
+        counter += 1
+    return None
 
 def find_all_indexes(text, pattern):
     """Return a list of starting indexes of all occurrences of pattern in text,
@@ -68,3 +83,4 @@ def main():
 
 if __name__ == '__main__':
     print(contains("abxkcdf", "xkcd"))
+    print(find_index("abxkcdf", "xkcd"))
