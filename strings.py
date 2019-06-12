@@ -6,6 +6,8 @@ def contains(text, pattern):
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
     counter = 0
+    new_counter = 0
+    pattern_checker = 0
     while counter < len(text):
         if text[counter] == pattern[0]:
             pattern_checker = 1
@@ -28,6 +30,9 @@ def find_index(text, pattern):
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_index here (iteratively and/or recursively)
     counter = 0
+    new_index = 0
+    new_counter = 0
+    pattern_checker = 0
     while counter < len(text):
         if text[counter] == pattern[0]:
             pattern_checker = 1
@@ -51,6 +56,9 @@ def find_all_indexes(text, pattern):
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_all_indexes here (iteratively and/or recursively)
     counter = 0
+    new_index = 0
+    new_counter = 0
+    pattern_checker = 0
     index_array = []
     while counter < len(text):
         if text[counter] == pattern[0]:
