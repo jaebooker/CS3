@@ -1,5 +1,6 @@
 #!python
 import string
+import math
 # Hint: Use these string constants to encode/decode hexadecimal digits and more
 # string.digits is '0123456789'
 # string.hexdigits is '0123456789abcdefABCDEF'
@@ -27,21 +28,24 @@ def decode(digits, base):
     add the output of this to the given result
     """
     result = 0
+    # for i, c in enumerate(digits[::-1]):
+    #     string = False
+    #     for ii,cc in enumerate(alpha_numbers):
+    #         if c == cc:
+    #             if i == 0:
+    #                 result += ii+10
+    #             else:
+    #                 result += (base ** i)*(ii+10)
+    #             string = True
+    #             break
+    #     if string != True:
+    #         if i == 0:
+    #             result += int(c)
+    #         else:
+    #             result += (base ** i)*int(c)
+    """Above would have been for custom version of string.printable. But couldn't fix case for decoding base10 into base10"""
     for i, c in enumerate(digits[::-1]):
-        string = False
-        for ii,cc in enumerate(alpha_numbers):
-            if c == cc:
-                if i == 0:
-                    result += ii+10
-                else:
-                    result += (base ** i)*(ii+10)
-                string = True
-                break
-        if string != True:
-            if i == 0:
-                result += int(c)
-            else:
-                result += (base ** i)*int(c)
+        result +=  (base ** i) * string.printable.index(c)
     return result
     # TODO: Decode digits from binary (base 2)
     # ...
@@ -60,14 +64,14 @@ def encode(number, base):
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
-    result = ""
+    result = []
     num = number
     while num != 0:
-        result += str(num % base)
+        result.append(num % base)
         num = num // base
     reverse_result = ""
-    for i, c in enumerate(result[::-1]):
-        reverse_result += c
+    for i in result[::-1]:
+        reverse_result += string.printable[i]
     return reverse_result
     # TODO: Encode number in binary (base 2)
     # ...
@@ -124,4 +128,5 @@ if __name__ == '__main__':
     # print(decode("010010", 8))
     print(encode(9, 2))
     print(convert("1001", 2, 2))
+    print(encode(11, 16))
     #main()
