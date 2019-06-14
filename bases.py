@@ -90,7 +90,6 @@ def convert(digits, base1, base2):
     Convert the number to base 10, then convert it to second base
     """
     base10_num = decode(digits, base1)
-    print(base10_num)
     return encode(base10_num, base2)
     # TODO: Convert digits from base 2 to base 16 (and vice versa)
     # ...
@@ -119,7 +118,7 @@ def main():
 
 
 if __name__ == '__main__':
-    #main()
+    main()
     # print(decode("ADAA", 16))
     # print(decode("00101010", 2))
     # print(decode("010010", 8))

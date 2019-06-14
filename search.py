@@ -32,41 +32,81 @@ def binary_search(array, item):
     """return the index of item in sorted array or None if item is not found"""
     # implement binary_search_iterative and binary_search_recursive below, then
     # change this to call your implementation to verify it passes all tests
-    return binary_search_iterative(array, item)
-    # return binary_search_recursive(array, item)
+    # return binary_search_iterative(array, item)
+    return binary_search_recursive(array, item)
 
 
 def binary_search_iterative(array, item):
     # TODO: implement binary search iteratively here
-    iteration = True
-    while iteration:
-        if len(array) == 0:
-            return None
-        if item > array[len(array) // 2]:
-            array = array[(len(array)//2):len(array)]
-        elif item < array[len(array) // 2]:
-            array = array[0:(len(array)//2)]
-        elif item == array[len(array) // 2]:
-            return len(array) // 2
-        else:
-            return None
+    # if item == array[0]:
+    #     return array[0]
+    # iteration = True
+    # while iteration:
+    #     if len(array) == 0:
+    #         return None
+    #     if item > array[len(array) // 2]:
+    #         array = array[(len(array)//2):len(array)]
+    #     elif item < array[len(array) // 2]:
+    #         array = array[0:(len(array)//2)]
+    #     elif item == array[len(array) // 2]:
+    #         return array[len(array) // 2]
+    #     else:
+    #         return None
     # once implemented, change binary_search to call binary_search_iterative
     # to verify that your iterative implementation passes all tests
-
-
-def binary_search_recursive(array, item):
-    # TODO: implement binary search recursively here
-    if len(array) == 0:
-        return None
-    if item > array[len(array) // 2]:
-        return binary_search_recursive(array[(len(array)//2):len(array)], item)
-    elif item < array[len(array) // 2]:
-        return binary_search_recursive(array[0:(len(array)//2)], item)
-    elif item == array[len(array) // 2]:
-        return len(array) // 2
+    """Version above was used when I was returning items, not indexs"""
+    left = 0
+    right = len(array) - 1
+    mid = (right - left) // 2
+    while left <= right:
+        if array[mid] == item:
+            return mid
+        elif array[mid] > item:
+            right = mid - 1
+        else:
+            left = mid + 1
+        mid = (left + right) // 2
     return None
-    # once implemented, change binary_search to call binary_search_recursive
-    # to verify that your recursive implementation passes all tests
-print(binary_search_recursive([1,2,3,4,5], 5))
-print(binary_search_iterative([1,2,3,4,5], 5))
-print(binary_search_iterative(["Alpha","Bear","Cockey","Dat","Winnie"], "Winnie"))
+
+
+def binary_search_recursive(array, item, left=None,right=None):
+    # TODO: implement binary search recursively here
+    # if tracker is None:
+    #     tracker=len(array)//2
+    # print(tracker)
+    # if len(array) == 0:
+    #     return None
+    # if item == array[0]:
+    #     return 0
+    # if item > array[len(array) // 2]:
+    #     print("up")
+    #     half = (len(array)//2)//2
+    #     return binary_search_recursive(array[(len(array)//2):len(array)], item, tracker=tracker + half)
+    # elif item < array[len(array) // 2]:
+    #     print("down")
+    #     return binary_search_recursive(array[0:(len(array)//2)], item,tracker=tracker - (len(array)//2))
+    # elif item == array[len(array) // 2]:
+    #     return tracker
+    # return None
+
+    """I give up on doing it my super special way (shown above). Here's the normy version. *sigh*"""
+    if left == None:
+        left = 0
+        right = len(array) - 1
+
+    if left <= right:
+        mid = (left + right) // 2
+        if array[mid] == item:
+            return mid
+        elif array[mid] > item:
+            new_right = mid - 1
+            return binary_search_recursive(array, item, left=left, right=new_right)
+        else:
+            new_left = mid + 1
+            return binary_search_recursive(array, item, left=new_left, right=right)
+    return None
+print(binary_search_recursive([0,1,2,3,4,5,6,7,8,9], 6))
+#print(binary_search_iterative([1,2,3,4,5], 5))
+#print(binary_search_iterative(["Alpha","Bear","Cockey","Dat","Winnie"], "Winnie"))
+# names = ['Alex', 'Brian', 'Julia', 'Kojin', 'Nabil', 'Nick', 'Winnie']
+# print(binary_search_recursive(names, 'Nick'))

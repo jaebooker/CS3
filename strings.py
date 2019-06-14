@@ -109,3 +109,4 @@ if __name__ == '__main__':
     print(contains("abxkcdf", "xkcd"))
     print(find_index("abxkcdf", "xkcd"))
     print(find_all_indexes("abcdfxkcd", "cd"))
+    print(contains("bananas", "nas"))
