@@ -21,32 +21,34 @@ class LinkedQueue(object):
 
     def is_empty(self):
         """Return True if this queue is empty, or False otherwise."""
-        if self.list.is_empty(self):
+        if self.list.is_empty():
             return True
         return False
 
     def length(self):
         """Return the number of items in this queue."""
-        return self.list.size()
+        return self.list.size
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
         Running time: O(1) – Why? No need to traverse"""
-        self.list.prepend(self, item)
+        self.list.prepend(item)
 
     def front(self):
         """Return the item at the front of this queue without removing it,
         or None if this queue is empty."""
-        if self != None:
-            return self.tail()
+        if self.list.tail != None:
+            return self.list.tail.data
         return None
 
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
         Running time: O(1) – Why? No because all it needs is the tail"""
-        if self.list != None:
-            self.list.delete(self,self.list.tail.data)
+        if self.list.tail != None:
+            deleted_item = self.list.tail.data
+            self.list.delete(deleted_item)
+            return deleted_item
         raise ValueError("List is empty!")
 
 
