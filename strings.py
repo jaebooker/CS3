@@ -1,5 +1,5 @@
 #!python
-
+"""STARTER CODE FROM NEPTUNIUS"""
 def contains(text, pattern):
     """Return a boolean indicating whether pattern occurs in text."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)

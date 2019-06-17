@@ -1,5 +1,5 @@
 #!python
-
+"""CODE FROM NEPTUNIUS"""
 from stack import Stack
 import unittest
 

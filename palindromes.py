@@ -1,5 +1,5 @@
 #!python
-
+"""STARTER CODE FROM NEPTUNIUS"""
 import string
 import re
 # Hint: Use these string constants to ignore capitalization and/or punctuation

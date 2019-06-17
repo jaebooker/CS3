@@ -1,5 +1,5 @@
 #!python
-
+"""CODE FROM NEPTUNIUS"""
 from linkedlist import LinkedList, Node
 import unittest
 

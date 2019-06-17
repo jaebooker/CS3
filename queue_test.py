@@ -1,5 +1,5 @@
 #!python
-
+"""CODE FROM NEPTUNIUS"""
 from queue import Queue
 import unittest
 

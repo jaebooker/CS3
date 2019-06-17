@@ -2,7 +2,7 @@
 
 from linkedlist import LinkedList
 
-
+"""STARTER CODE FROM NEPTUNIUS"""
 # Implement LinkedStack below, then change the assignment at the bottom
 # to use this Stack implementation to verify it passes all tests
 class LinkedStack(object):

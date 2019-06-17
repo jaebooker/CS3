@@ -1,5 +1,5 @@
 #!python
-
+"""CODE FROM NEPTUNIUS"""
 
 class BinaryTreeNode(object):
 
