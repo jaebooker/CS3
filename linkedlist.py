@@ -78,7 +78,11 @@ class LinkedList(object):
         # Check if the given index is out of range and if so raise an error
         if not (0 <= index < self.size):
             raise ValueError('List index out of range: {}'.format(index))
-        # TODO: Find the node at the given index and return its data
+        # Finds the node at the given index and return its data
+        runner = Node()
+        for _ in range(index):
+            runner = runner.next
+        return new_node.data
 
     def insert_at_index(self, index, item):
         """Insert the given item at the given index in this linked list, or
@@ -145,7 +149,13 @@ class LinkedList(object):
         Worst case running time: ??? under what conditions? [TODO]"""
         # TODO: Find the node containing the given old_item and replace its
         # data with new_item, without creating a new node object
-        pass
+        runner = self.head
+        while runner != None:
+            if runner.data = old_item:
+                runner.data = new_item
+                break
+            runner = runner.next
+        aise ValueError('Original item not found:{}'.format(old_item))
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
