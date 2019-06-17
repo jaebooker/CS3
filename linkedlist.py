@@ -84,7 +84,7 @@ class LinkedList(object):
         runner = self.head
         for _ in range(index):
             runner = runner.next
-        return new_node.data
+        return runner.data
 
     def insert_at_index(self, index, item):
         """Insert the given item at the given index in this linked list, or
