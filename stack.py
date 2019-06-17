@@ -69,29 +69,33 @@ class ArrayStack(object):
 
     def is_empty(self):
         """Return True if this stack is empty, or False otherwise."""
-        if self == None:
+        if self.list == None:
             return True
         return False
 
     def length(self):
         """Return the number of items in this stack."""
-        return len(self)
+        return len(self.list)
 
     def push(self, item):
         """Insert the given item on the top of this stack.
-        Running time: O(1) – Why? Doesn't have to move data"""
-        self.push(item)
+        Running time: O(n) – Why? Doesn't have to move data"""
+        self.list.append(item)
 
     def peek(self):
         """Return the item on the top of this stack without removing it,
         or None if this stack is empty."""
-        self.list[0]
+        if self.list[-1]:
+            return self.list[-1]
+        return None
 
     def pop(self):
         """Remove and return the item on the top of this stack,
         or raise ValueError if this stack is empty.
-        Running time: O(n) – Why? Because all items must be moved down array"""
-        self.pop(self.list[0])
+        Running time: O(1) – Why? Because it doesn't move any data"""
+        if len(self.list) != 0:
+            return self.list.pop()
+        raise ValueError("Empty list!")
 
 
 # Implement LinkedStack and ArrayStack above, then change the assignment below
