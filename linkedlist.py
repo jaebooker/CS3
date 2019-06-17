@@ -75,8 +75,8 @@ class LinkedList(object):
     def get_at_index(self, index):
         """Return the item at the given index in this linked list, or
         raise ValueError if the given index is out of range of the list size.
-        Best case running time: ??? under what conditions? 0(1)
-        Worst case running time: ??? under what conditions? O(n)"""
+        Best case running time: 0(1) under what conditions? If index is first node
+        Worst case running time: O(n) under what conditions? If whole list must be traversed"""
         # Check if the given index is out of range and if so raise an error
         if not (0 <= index < self.size):
             raise ValueError('List index out of range: {}'.format(index))
@@ -89,8 +89,8 @@ class LinkedList(object):
     def insert_at_index(self, index, item):
         """Insert the given item at the given index in this linked list, or
         raise ValueError if the given index is out of range of the list size.
-        Best case running time: ??? under what conditions? O(1)
-        Worst case running time: ??? under what conditions? O(n)"""
+        Best case running time: 0(1) under what conditions? If index is first node
+        Worst case running time: O(n) under what conditions? If whole list must be traversed"""
         # Check if the given index is out of range and if so raise an error
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
@@ -155,8 +155,8 @@ class LinkedList(object):
     def replace(self, old_item, new_item):
         """Replace the given old_item in this linked list with given new_item
         using the same node, or raise ValueError if old_item is not found.
-        Best case running time: ??? under what conditions? O(1)
-        Worst case running time: ??? under what conditions? O(n)"""
+        Best case running time: 0(1) under what conditions? If item is first node
+        Worst case running time: O(n) under what conditions? If whole list must be traversed"""
         # TODO: Find the node containing the given old_item and replace its
         # data with new_item, without creating a new node object
         runner = self.head
@@ -165,7 +165,7 @@ class LinkedList(object):
                 runner.data = new_item
                 break
             runner = runner.next
-        aise ValueError('Original item not found:{}'.format(old_item))
+        raise ValueError('Original item not found:{}'.format(old_item))
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
