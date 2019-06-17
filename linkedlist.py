@@ -84,7 +84,9 @@ class LinkedList(object):
         runner = self.head
         for _ in range(index):
             runner = runner.next
-        return runner.data
+        if runner != None:
+            return runner.data
+        raise ValueError('Data not found')
 
     def insert_at_index(self, index, item):
         """Insert the given item at the given index in this linked list, or
@@ -94,13 +96,21 @@ class LinkedList(object):
         # Check if the given index is out of range and if so raise an error
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
+        if index == 0:
+            self.prepend(item)
+            return
+        if index == self.size:
+            self.append(item)
+            return
         runner = self.head
         for _ in range(index):
             runner = runner.next
-        if runner == None:
-            runner.next = None
+        spare_node = Node(runner.data)
+        if spare_node.next == None:
+            self.append(spare_node.data)
             return
-        spare_node = runner
+        else:
+            spare_node.next = runner.next
         runner.data = item
         runner.next = spare_node
         self.size += 1
@@ -123,7 +133,7 @@ class LinkedList(object):
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
-        Best and worst case running time: ??? under what conditions? O(1)"""
+        Best and worst case running time: 0(1) because no traversing is needed"""
         # Create a new node to hold the given item
         new_node = Node(item)
         # Check if this linked list is empty
@@ -166,7 +176,7 @@ class LinkedList(object):
         while runner != None:
             if runner.data == old_item:
                 runner.data = new_item
-                break
+                return
             runner = runner.next
         raise ValueError('Original item not found:{}'.format(old_item))
 

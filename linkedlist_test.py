@@ -99,6 +99,8 @@ class LinkedListTest(unittest.TestCase):
         assert ll.size == 3
         ll.insert_at_index(2, 'C')  # insert 'C' between 'B' and 'D'
         assert ll.head.data == 'A'  # unchanged (at index 0)
+        print("tail")
+        print(ll.tail.data)
         assert ll.tail.data == 'D'  # unchanged (now at index 3)
         assert ll.size == 4
         with self.assertRaises(ValueError):
