@@ -1,5 +1,5 @@
 #!python
-"""CODE FROM NEPTUNIUS"""
+"""MOST CODE FROM NEPTUNIUS"""
 from search import linear_search, binary_search
 import unittest
 
@@ -35,6 +35,13 @@ class SearchTest(unittest.TestCase):
         assert binary_search(names, 'Nabil') == 4
         assert binary_search(names, 'Nick') == 5
         assert binary_search(names, 'Winnie') == 6
+    def test_if_breaks(self):
+        # binary search requires list values to be in sorted order
+        names = ['Alex']
+        # binary search should return the index of each item in the list
+        assert binary_search(names, 'Alex') == 0
+        assert binary_search(names, 'Brian') == None
+        assert binary_search(names, '') = None
 
     def test_binary_search_with_items_not_in_list(self):
         # binary search requires list values to be in sorted order

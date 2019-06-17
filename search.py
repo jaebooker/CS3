@@ -10,6 +10,8 @@ def linear_search(array, item):
 
 def linear_search_iterative(array, item):
     # loop over all array values until item is found
+    """Best case: O(1)
+    Worst case: O(n)"""
     for index, value in enumerate(array):
         if item == value:
             return index  # found
@@ -17,6 +19,8 @@ def linear_search_iterative(array, item):
 
 
 def linear_search_recursive(array, item, index=0):
+    """Best case: O(1)
+    Worst case: O(n)"""
     if index > len(array)-1:
         return None
     if item == array[index]:
@@ -54,7 +58,9 @@ def binary_search_iterative(array, item):
     #         return None
     # once implemented, change binary_search to call binary_search_iterative
     # to verify that your iterative implementation passes all tests
-    """Version above was used when I was returning items, not indexs"""
+    """Version above was used when I was returning items, not indexs
+    Best Case: O(1)
+    Worst Case: O(log)n"""
     left = 0
     right = len(array) - 1
     mid = (right - left) // 2
@@ -90,6 +96,8 @@ def binary_search_recursive(array, item, left=None,right=None):
     # return None
 
     """I give up on doing it my super special way (shown above). Here's the normy version. *sigh*"""
+    """Best case: O(1)
+    Worst case: O(log)n"""
     if left == None:
         left = 0
         right = len(array) - 1
