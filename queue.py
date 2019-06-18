@@ -32,21 +32,21 @@ class LinkedQueue(object):
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
         Running time: O(1) – Why? No need to traverse"""
-        self.list.prepend(item)
+        self.list.append(item)
 
     def front(self):
         """Return the item at the front of this queue without removing it,
         or None if this queue is empty."""
-        if self.list.tail != None:
-            return self.list.tail.data
+        if self.list.head != None:
+            return self.list.head.data
         return None
 
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
         Running time: O(1) – Why? No because all it needs is the tail"""
-        if self.list.tail != None:
-            deleted_item = self.list.tail.data
+        if self.list.head != None:
+            deleted_item = self.list.head.data
             self.list.delete(deleted_item)
             return deleted_item
         raise ValueError("List is empty!")
