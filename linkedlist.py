@@ -165,6 +165,27 @@ class LinkedList(object):
         # We never found data satisfying quality, but have to return something
         return None  # Constant time to return None
 
+    def find_middle(self):
+        runner = self.head
+        counter = -1
+        while runner.next != None:
+            counter += 1
+            runner = runner.next
+        if (counter % 2) == 0:
+            breaker = "even"
+        else:
+            breaker = "odd"
+        counter2 = 0
+        runner = self.head
+        while counter2 < (counter // 2):
+            counter2 += 1
+            runner = runner.next
+        nodes = []
+        if breaker == "even":
+            nodes.append(runner)
+        nodes.append(runner.next)
+        return nodes
+
     def replace(self, old_item, new_item):
         """Replace the given old_item in this linked list with given new_item
         using the same node, or raise ValueError if old_item is not found.

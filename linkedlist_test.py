@@ -145,6 +145,19 @@ class LinkedListTest(unittest.TestCase):
         assert ll.find(lambda item: item > 'B') == 'C'
         assert ll.find(lambda item: item == 'X') is None
 
+    def test_find_middle(self):
+        ll = LinkedList(['A', 'B', 'C'])
+        middle_node = ll.find_middle()
+        print(middle_node)
+        assert middle_node[0].data == 'B'
+        ll = LinkedList(['C', 'C', 'B', 'A'])
+        middle_node = ll.find_middle()
+        assert middle_node[0].data == 'C'
+        assert middle_node[1].data == 'B'
+        ll = LinkedList(['C','B'])
+        middle_node = ll.find_middle()
+        assert middle_node[0].data == 'C'
+
     def test_replace(self):
         ll = LinkedList(['A', 'B', 'C'])
         ll.replace('A', 'D')
