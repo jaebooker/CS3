@@ -6,7 +6,9 @@ def contains(text, pattern):
     Worst case: O(n^2)"""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement contains here (iteratively and/or recursively)
+    if pattern == "":
+        return True #It seems this should throw an error, but the tests get made when I don't implement this, so... here it is
+    #Implements contains here (iteratively and/or recursively)
     counter = 0
     new_counter = 0
     pattern_checker = 0
@@ -14,7 +16,7 @@ def contains(text, pattern):
         if text[counter] == pattern[0]:
             pattern_checker = 1
             new_counter = counter + 1
-            while pattern_checker < len(pattern):
+            while (pattern_checker < len(pattern)) and (new_counter < len(text)):
                 if text[new_counter] == pattern[pattern_checker]:
                     pattern_checker += 1
                     new_counter += 1
@@ -32,7 +34,9 @@ def find_index(text, pattern):
     Worst case: O(n^2)"""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement find_index here (iteratively and/or recursively)
+    if pattern == "": #This doesn't make sense to me. But the tests are under the impression that nothing is a pattern
+        return 0
+    #Implements find_index here (iteratively and/or recursively)
     counter = 0
     new_index = 0
     new_counter = 0
@@ -42,7 +46,7 @@ def find_index(text, pattern):
             pattern_checker = 1
             new_index = counter
             new_counter = counter + 1
-            while pattern_checker < len(pattern):
+            while (pattern_checker < len(pattern)) and (new_counter < len(text)):
                 if text[new_counter] == pattern[pattern_checker]:
                     pattern_checker += 1
                     new_counter += 1
@@ -60,18 +64,29 @@ def find_all_indexes(text, pattern):
     Worst case: O(n^2)"""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement find_all_indexes here (iteratively and/or recursively)
+    """Alright, I'm gonna try to humor this. The tests believe that nothing is a pattern that should be humored at every index
+    So, bare with me, the code below will add each index of the string, to return the pattern of...
+    (sigh) nothing... it returns the pattern of nothing"""
+    if pattern == "":
+        counter = 0
+        index_array = []
+        while counter < len(text):
+            index_array.append(counter)
+            counter += 1
+        return index_array
+    """Returning to sanity. All code below makes sense from now on, I promise"""
     counter = 0
     new_index = 0
     new_counter = 0
     pattern_checker = 0
     index_array = []
+    #Implements find_all_indexes here (iteratively and/or recursively)
     while counter < len(text):
         if text[counter] == pattern[0]:
             pattern_checker = 1
             new_index = counter
             new_counter = counter + 1
-            while pattern_checker < len(pattern):
+            while (pattern_checker < len(pattern)) and (new_counter < len(text)):
                 if text[new_counter] == pattern[pattern_checker]:
                     pattern_checker += 1
                     new_counter += 1
@@ -85,10 +100,8 @@ def find_all_indexes(text, pattern):
 def test_string_algorithms(text, pattern):
     found = contains(text, pattern)
     print('contains({!r}, {!r}) => {}'.format(text, pattern, found))
-    # TODO: Uncomment these lines after you implement find_index
     index = find_index(text, pattern)
     print('find_index({!r}, {!r}) => {}'.format(text, pattern, index))
-    # TODO: Uncomment these lines after you implement find_all_indexes
     indexes = find_all_indexes(text, pattern)
     print('find_all_indexes({!r}, {!r}) => {}'.format(text, pattern, indexes))
 
@@ -113,6 +126,7 @@ def main():
 
 if __name__ == '__main__':
     print(contains("abxkcdf", "xkcd"))
-    print(find_index("abxkcdf", "xkcd"))
+    print(find_index("xxxab", "abc"))
     print(find_all_indexes("abcdfxkcd", "cd"))
     print(contains("bananas", "nas"))
+    print(find_all_indexes('abcabcab', 'abc'))
