@@ -20,6 +20,8 @@ def is_palindrome(text):
 
 def is_palindrome_iterative(text):
     # TODO: implement the is_palindrome function iteratively here
+    regex = re.compile('[^a-zA-Z]')
+    text = regex.sub('', text)
     text = text.upper()
     thing_1 = 0
     thing_2 = len(text)-1
@@ -68,3 +70,4 @@ def main():
 if __name__ == '__main__':
     #print(is_palindrome_iterative("talcat"))
     print(is_palindrome_recursive("TAC!!!Oc      at", left=None, right=None))
+    print(is_palindrome_iterative("no, on!"))
