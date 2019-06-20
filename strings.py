@@ -26,7 +26,11 @@ def contains(text, pattern):
                 return True
         counter += 1
     return False
-
+def reusable_contains(text, pattern):
+    check = find_index(text, pattern)
+    if check != []:
+        return True
+    return False
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
     or None if not found."""
@@ -56,7 +60,10 @@ def find_index(text, pattern):
                 return new_index
         counter += 1
     return None
-
+def reusable_find_index(text, pattern):
+    index = find_all_indexes(text, pattern)
+    if index != []:
+        return index[0]
 def find_all_indexes(text, pattern):
     """Return a list of starting indexes of all occurrences of pattern in text,
     or an empty list if not found."""
@@ -96,6 +103,17 @@ def find_all_indexes(text, pattern):
                 index_array.append(new_index)
         counter += 1
     return index_array
+# def find_all_indexes(text, pattern):
+#     counter = 0
+#     index_array = []
+#     while counter < len(text):
+#         new_text = text[counter:len(text)-1]
+#         print(new_text)
+#         temp = find_all_indexes(new_text, pattern)
+#         if temp != []:
+#             index_array.append(temp)
+#         counter += 1
+#     return index_array
 
 def test_string_algorithms(text, pattern):
     found = contains(text, pattern)
