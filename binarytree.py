@@ -31,13 +31,17 @@ class BinaryTreeNode(object):
         downward path from this node to a descendant leaf node).
         Best and worst case running time: O(n) because it must traverse both sides completely"""
         # Checks if left child has a value and if so calculate its height
+        left = 0
+        right = 0
         if self.left.data != None:
-            pass
+            left = self.left.height()
         # Checks if right child has a value and if so calculate its height
         if self.right.data != None:
-            pass
+            right = self.right.heigh()
         #Returns one more than the greater of the left height and right height
-        ...
+        if left > right:
+            return left + 1
+        return right + 1
 
 
 class BinarySearchTree(object):
