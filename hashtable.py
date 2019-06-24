@@ -140,6 +140,10 @@ class HashTable(object):
         Best and worst case running time: O(n) under what conditions? All must be rehashed, so it will always be O(n)
         Best and worst case space usage: O(n) what uses this memory? A memory is also being reallocated"""
         # If unspecified, choose new size dynamically based on current size
+        # Get a list to temporarily hold all current key-value entries.
+        # Create a new list of new_size total empty linked list buckets
+        # Insert each key-value entry into the new list of buckets,
+        # which will rehash them into a new bucket index based on the new size
         if new_size is None:
             new_size = len(self.buckets) * 2  # Double size
         # Option to reduce size if buckets are sparsely filled (low load factor)
@@ -150,12 +154,6 @@ class HashTable(object):
         self.size = 0
         for k, v in temp_items:
             self.set(k, v)
-        # TODO: Get a list to temporarily hold all current key-value entries
-        # ...
-        # TODO: Create a new list of new_size total empty linked list buckets
-        # ...
-        # TODO: Insert each key-value entry into the new list of buckets,
-        # which will rehash them into a new bucket index based on the new size
 
 
 
