@@ -64,7 +64,7 @@ class BinarySearchTree(object):
         Best and worst case running time: O(n) because it must traverse all branches"""
         # Checks if root node has a value and if so calculate its height
         if self.root.data != None:
-            pass
+            return self.root.height()
 
     def contains(self, item):
         """Return True if this binary search tree contains the given item.
