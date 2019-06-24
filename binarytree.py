@@ -68,8 +68,8 @@ class BinarySearchTree(object):
 
     def contains(self, item):
         """Return True if this binary search tree contains the given item.
-        TODO: Best case running time: ??? under what conditions?
-        TODO: Worst case running time: ??? under what conditions?"""
+        Best case running time: O(1) if it is at root
+        Worst case running time: O(log)n if it is at longest branch"""
         # Find a node with the given item, if any
         node = self._find_node_recursive(item, self.root)
         # Returns True if a node was found, or False
@@ -78,8 +78,8 @@ class BinarySearchTree(object):
     def search(self, item):
         """Return an item in this binary search tree matching the given item,
         or None if the given item is not found.
-        TODO: Best case running time: ??? under what conditions?
-        TODO: Worst case running time: ??? under what conditions?"""
+        Best case running time: O(1) if it is at root
+        Worst case running time: O(log)n if it is at longest branch"""
         # Find a node with the given item, if any
         node = self._find_node_recursive(item, self.root)
         # Returns the node's data if found, or None
@@ -113,8 +113,8 @@ class BinarySearchTree(object):
         """Return the node containing the given item in this binary search tree,
         or None if the given item is not found. Search is performed iteratively
         starting from the root node.
-        TODO: Best case running time: ??? under what conditions?
-        TODO: Worst case running time: ??? under what conditions?"""
+        Best case running time: O(1), if node is at root
+        Worst case running time: O(log)n if node is at end of longest branch"""
         # Start with the root node
         node = self.root
         # Loop until we descend past the closest leaf node
@@ -138,8 +138,8 @@ class BinarySearchTree(object):
         """Return the node containing the given item in this binary search tree,
         or None if the given item is not found. Search is performed recursively
         starting from the given node (give the root node to start recursion).
-        TODO: Best case running time: ??? under what conditions?
-        TODO: Worst case running time: ??? under what conditions?"""
+        Best case running time: O(1), if node is at root
+        Worst case running time: O(log)n if node is at end of longest branch"""
         # Check if starting node exists
         if node is None:
             # Not found (base case)
@@ -162,8 +162,8 @@ class BinarySearchTree(object):
         (or the parent node of where the given item would be if inserted)
         in this tree, or None if this tree is empty or has only a root node.
         Search is performed iteratively starting from the root node.
-        TODO: Best case running time: O(1) If child or root
-        TODO: Worst case running time: O(log)n if must traverse through whole tree"""
+        Best case running time: O(1), if node is at root
+        Worst case running time: O(log)n if node is at end of longest branch"""
         # Start with the root node and keep track of its parent
         node = self.root
         parent = None
@@ -191,7 +191,9 @@ class BinarySearchTree(object):
         (or the parent node of where the given item would be if inserted)
         in this tree, or None if this tree is empty or has only a root node.
         Search is performed recursively starting from the given node
-        (give the root node to start recursion)."""
+        (give the root node to start recursion).
+        Best case running time: O(1), if node is at root
+        Worst case running time: O(log)n if node is at end of longest branch"""
         # Check if starting node exists
         if node is None:
             # Not found (base case)
