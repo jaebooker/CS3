@@ -116,6 +116,12 @@ class StringsTest(unittest.TestCase):
         # TODO: Write more test cases that check complex patterns or edge cases
         # You'll need a lot more than this to test your algorithm's robustness
         # ...
+    def test_works_with_odd_sentences(self):
+        assert contains('ab a nine nine two', 'z') is False
+        assert contains('9 214 saf ll', '14') is True
+        assert contains('i never ate breakfast this morning...', 'fast') is True
+        assert contains('i never ate breakfast this morning...but someone did', 'morning') is True
+        print("all is working")
 
 
 if __name__ == '__main__':

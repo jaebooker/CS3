@@ -1,66 +1,13 @@
 #!python
 """STARTER CODE FROM NEPTUNIUS"""
+
 def contains(text, pattern):
-    """Return a boolean indicating whether pattern occurs in text."""
-    """Best case: O(1)
-    Worst case: O(n^2)"""
-    assert isinstance(text, str), 'text is not a string: {}'.format(text)
-    assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    if pattern == "":
-        return True #It seems this should throw an error, but the tests get made when I don't implement this, so... here it is
-    #Implements contains here (iteratively and/or recursively)
-    counter = 0
-    new_counter = 0
-    pattern_checker = 0
-    while counter < len(text):
-        if text[counter] == pattern[0]:
-            pattern_checker = 1
-            new_counter = counter + 1
-            while (pattern_checker < len(pattern)) and (new_counter < len(text)):
-                if text[new_counter] == pattern[pattern_checker]:
-                    pattern_checker += 1
-                    new_counter += 1
-                else:
-                    break
-            if pattern_checker == len(pattern):
-                return True
-        counter += 1
-    return False
-def reusable_contains(text, pattern):
-    check = find_index(text, pattern)
+    check = find_all_indexes(text, pattern)
     if check != []:
         return True
     return False
+
 def find_index(text, pattern):
-    """Return the starting index of the first occurrence of pattern in text,
-    or None if not found."""
-    """Best case: O(1)
-    Worst case: O(n^2)"""
-    assert isinstance(text, str), 'text is not a string: {}'.format(text)
-    assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    if pattern == "": #This doesn't make sense to me. But the tests are under the impression that nothing is a pattern
-        return 0
-    #Implements find_index here (iteratively and/or recursively)
-    counter = 0
-    new_index = 0
-    new_counter = 0
-    pattern_checker = 0
-    while counter < len(text):
-        if text[counter] == pattern[0]:
-            pattern_checker = 1
-            new_index = counter
-            new_counter = counter + 1
-            while (pattern_checker < len(pattern)) and (new_counter < len(text)):
-                if text[new_counter] == pattern[pattern_checker]:
-                    pattern_checker += 1
-                    new_counter += 1
-                else:
-                    break
-            if pattern_checker == len(pattern):
-                return new_index
-        counter += 1
-    return None
-def reusable_find_index(text, pattern):
     index = find_all_indexes(text, pattern)
     if index != []:
         return index[0]
@@ -103,17 +50,6 @@ def find_all_indexes(text, pattern):
                 index_array.append(new_index)
         counter += 1
     return index_array
-# def find_all_indexes(text, pattern):
-#     counter = 0
-#     index_array = []
-#     while counter < len(text):
-#         new_text = text[counter:len(text)-1]
-#         print(new_text)
-#         temp = find_all_indexes(new_text, pattern)
-#         if temp != []:
-#             index_array.append(temp)
-#         counter += 1
-#     return index_array
 
 def test_string_algorithms(text, pattern):
     found = contains(text, pattern)
