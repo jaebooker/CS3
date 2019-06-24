@@ -222,6 +222,10 @@ class BinarySearchTree(object):
         node = _find_node_recursive(self, item, self.root)
         parent = _find_parent_node_recursive(self, item, node, parent=None)
 
+        # Uses helper methods and break this algorithm down into 3 cases
+        # based on how many children the node containing the given item has and
+        # implement new helper methods for subtasks of the more complex cases
+
         if node is None:
             return None
         if item > parent.data:
@@ -229,10 +233,6 @@ class BinarySearchTree(object):
         if item < parent.data:
             parent.left = None
         del(node)
-
-        # Uses helper methods and break this algorithm down into 3 cases
-        # based on how many children the node containing the given item has and
-        # implement new helper methods for subtasks of the more complex cases
 
     def items_in_order(self):
         """Return an in-order list of all items in this binary search tree."""
