@@ -2,12 +2,16 @@
 """STARTER CODE FROM NEPTUNIUS"""
 
 def contains(text, pattern):
+    """Best case: O(1)
+    Worst case: O(n^2)"""
     check = find_all_indexes(text, pattern)
     if check != []:
         return True
     return False
 
 def find_index(text, pattern):
+    """Best case: O(1)
+    Worst case: O(n^2)"""
     index = find_all_indexes(text, pattern)
     if index != []:
         return index[0]
