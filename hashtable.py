@@ -138,8 +138,10 @@ class HashTable(object):
         """Resize this hash table's buckets and rehash all key-value entries.
         Should be called automatically when load factor exceeds a threshold
         such as 0.75 after an insertion (when set is called with a new key).
-        Best and worst case running time: O(n) under what conditions? All must be rehashed, so it will always be O(n)
-        Best and worst case space usage: O(n) what uses this memory? A memory is also being reallocated"""
+        Best and worst case running time: O(n), because O(nbl), where b is always bigger and l is roughly constant,
+        where all is dependent on n
+        Best and worst case space usage: O(n), because O(nbl), where b is always bigger and l is roughly constant,
+        where all is dependent on n"""
         # If unspecified, choose new size dynamically based on current size
         # Get a list to temporarily hold all current key-value entries.
         # Create a new list of new_size total empty linked list buckets
@@ -150,11 +152,11 @@ class HashTable(object):
         # Option to reduce size if buckets are sparsely filled (low load factor)
         elif new_size is 0:
             new_size = len(self.buckets) / 2  # Half size
-        temp_items = self.items()
-        self.buckets = [LinkedList() for i in range(new_size)]
+        temp_items = self.items() #O(n)
+        self.buckets = [LinkedList() for i in range(new_size)] #O(b)
         self.size = 0
-        for k, v in temp_items:
-            self.set(k, v)
+        for k, v in temp_items: #O(nl)
+            self.set(k, v) #O(l)
 
 
 

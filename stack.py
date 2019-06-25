@@ -36,7 +36,8 @@ class LinkedStack(object):
 
     def peek(self):
         """Return the item on the top of this stack without removing it,
-        or None if this stack is empty."""
+        or None if this stack is empty.
+        Running time: O(1) – Why? Because it doesn't have to traverse list"""
         if self.list.is_empty():
             return None
         else:
@@ -82,12 +83,13 @@ class ArrayStack(object):
 
     def push(self, item):
         """Insert the given item on the top of this stack.
-        Running time: O(n) – Why? Doesn't have to move data"""
+        Running time: O(1) – Why? Doesn't have to move data"""
         self.list.append(item)
 
     def peek(self):
         """Return the item on the top of this stack without removing it,
-        or None if this stack is empty."""
+        or None if this stack is empty.
+        Running time: O(1) – Why? Because it doesn't move any data"""
         if self.length() > 0:
             return self.list[-1]
         return None
