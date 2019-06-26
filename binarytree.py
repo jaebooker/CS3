@@ -228,9 +228,27 @@ class BinarySearchTree(object):
 
         if node is None:
             return None
-        if item > parent.data:
+        if item > parent.data: #Right side of parent
+            if (node.left != None) and (node.right != None):
+                new_node = node.left
+                new_node.right = node.right
+                parent.right = new_node
+            else:
+                if node.right != None:
+                    parent.right = node.right
+                elif node.left != None:
+                    parent.right = node.left
             parent.right = None
-        if item < parent.data:
+        if item < parent.data: #Left side of parent
+            if (node.left != None) and (node.right != None):
+                new_node = node.right
+                new_node.left = node.left
+                parent.left = new_node
+            else:
+                if node.right != None:
+                    parent.left = node.right
+                elif node.left != None:
+                    parent.left = node.left
             parent.left = None
         del(node)
 
