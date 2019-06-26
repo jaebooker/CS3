@@ -229,27 +229,29 @@ class BinarySearchTree(object):
         if node is None:
             return None
         if item > parent.data: #Right side of parent
-            if (node.left != None) and (node.right != None):
+            if (node.left != None) and (node.right != None): #If node has two children
                 new_node = node.left
                 new_node.right = node.right
                 parent.right = new_node
-            else:
+            elif (node.left != None) or (node.right != None): #If node has one child
                 if node.right != None:
                     parent.right = node.right
-                elif node.left != None:
+                else node.left != None:
                     parent.right = node.left
-            parent.right = None
+            else:
+                parent.right = None
         if item < parent.data: #Left side of parent
-            if (node.left != None) and (node.right != None):
+            if (node.left != None) and (node.right != None): #If node has two children
                 new_node = node.right
                 new_node.left = node.left
                 parent.left = new_node
-            else:
+            elif (node.left != None) or (node.right != None): #If node has one child
                 if node.right != None:
                     parent.left = node.right
-                elif node.left != None:
+                else node.left != None:
                     parent.left = node.left
-            parent.left = None
+            else:
+                parent.left = None
         del(node)
 
     def items_in_order(self):
