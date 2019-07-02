@@ -244,7 +244,11 @@ class BinarySearchTreeTest(unittest.TestCase):
         # Create a complete binary search tree of 3 strings in level-order
         items = ['B', 'A', 'C']
         tree = BinarySearchTree(items)
+        print("dem trees")
+        print(tree)
         # Ensure the level-order traversal of tree items is ordered correctly
+        print("dis order is popin")
+        print(tree.items_level_order())
         assert tree.items_level_order() == ['B', 'A', 'C']
 
     def test_items_in_order_with_7_numbers(self):
@@ -265,7 +269,11 @@ class BinarySearchTreeTest(unittest.TestCase):
         # Create a complete binary search tree of 7 items in level-order
         items = [4, 2, 6, 1, 3, 5, 7]
         tree = BinarySearchTree(items)
+        print("dis tree is smokin")
+        print(tree)
         # Ensure the post-order traversal of tree items is ordered correctly
+        print("dis order is popin")
+        print(tree.items_post_order())
         assert tree.items_post_order() == [1, 3, 2, 5, 7, 6, 4]
 
     def test_items_level_order_with_7_numbers(self):
