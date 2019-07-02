@@ -153,11 +153,11 @@ class BinarySearchTree(object):
             # Not found (base case)
             return None
         # Check if the given item matches the node's data
-        elif node.data == item:
+        if node.data == item:
             # Return the found node
             return node
         # Check if the given item is less than the node's data
-        elif node.data < item:
+        elif node.data > item:
             # Recursively descend to the node's left child, if it exists
             return self._find_node_recursive(item, node.left)
         # Check if the given item is greater than the node's data
@@ -322,10 +322,10 @@ class BinarySearchTree(object):
         visit(node.data)
         # Traverse left subtree, if it exists
         if node.left != None:
-            self._traverse_in_order_recursive(node.left, visit)
+            self._traverse_pre_order_recursive(node.left, visit)
         # Traverse right subtree, if it exists
         if node.right != None:
-            self._traverse_in_order_recursive(node.right, visit)
+            self._traverse_pre_order_recursive(node.right, visit)
 
     # def _traverse_pre_order_iterative(self, node, visit):
     #     """Traverse this binary tree with iterative pre-order traversal (DFS).
@@ -359,10 +359,10 @@ class BinarySearchTree(object):
         Memory usage: O(h) where h equals the height, since it is placed in a stack"""
         # Traverse left subtree, if it exists
         if node.left != None:
-            self._traverse_in_order_recursive(node.left, visit)
+            self._traverse_post_order_recursive(node.left, visit)
         # Traverse right subtree, if it exists
         if node.right != None:
-            self._traverse_in_order_recursive(node.right, visit)
+            self._traverse_post_order_recursive(node.right, visit)
         # Visit this node's data with given function
         visit(node.data)
 
