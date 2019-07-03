@@ -35,5 +35,19 @@ class TestSet(unittest.TestCase):
         # with st.assertRaises(KeyError):
         #     ht.delete('A')  # Key does not exist
 
+    def test_is_subset(self):
+        set1 = TheGodSet(8)
+        set2 = TheGodSet(8)
+        set1.add('I', 1)
+        set1.add('V', 5)
+        set1.add('X', 10)
+        set2.add('I', 1)
+        set2.add('V', 5)
+        set2.add('O', 10)
+        assert set1.is_subset(set2, ['I','V']) is True
+        assert set1.is_subset(set2, ['I','X','V']) is True
+        assert set2.is_subset(set1, ['V','I']) is True
+        assert set2.is_subset(set1, ['I','V','X']) is False
+
 if __name__ == '__main__':
     unittest.main()
