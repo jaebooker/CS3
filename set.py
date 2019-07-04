@@ -37,11 +37,11 @@ class TheGodSet(object):
     even if the key is in both sets. This assumption will also be the case in all functions below
     Best and worst case running time: O(n) because all elements must be traversed in both sets"""
     def intersection(self, set2):
-        if self.size > set2.size:
+        if self.size < set2.size: #Checking which set is smaller, since worse case could only be size of smaller set
             new_size = self.size
         else:
             new_size = set2.size
-        common_set = TheGodSet(new_size * 2) #Preparing for all common entries, doubling larger set
+        common_set = TheGodSet(new_size * 2) #Preparing for all common entries, doubling smaller set
         for i in set2.set.keys():
             if self.contains(i) == True:
                 v = self.set.get(i)
