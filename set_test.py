@@ -38,16 +38,22 @@ class TestSet(unittest.TestCase):
     def test_is_subset(self):
         set1 = TheGodSet(8)
         set2 = TheGodSet(8)
+        set3 = TheGodSet(8)
+        set4 = TheGodSet(8)
         set1.add('I', 1)
         set1.add('V', 5)
         set1.add('X', 10)
         set2.add('I', 1)
         set2.add('V', 5)
         set2.add('O', 10)
-        assert set1.is_subset(set2, ['I','V']) is True
-        assert set1.is_subset(set2, ['I','X','V']) is True
-        assert set2.is_subset(set1, ['V','I']) is True
-        assert set2.is_subset(set1, ['I','V','X']) is False
+        set3.add('I', 1)
+        set3.add('V', 5)
+        set4.add('I', 1)
+        set4.add('O', 5)
+        assert set2.is_subset(set3) is True
+        assert set2.is_subset(set4) is True
+        assert set1.is_subset(set3) is True
+        assert set1.is_subset(set4) is False
 
 if __name__ == '__main__':
     unittest.main()

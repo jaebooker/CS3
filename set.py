@@ -2,8 +2,8 @@ from hashtable import HashTable
 
 class TheGodSet(object):
     def __init__(self, num):
-        self.size = self.length()
         self.set = HashTable(num)
+        self.size = self.length()
 
     """Length() returns the number of key-value entries by traversing its buckets.
     Best and worst case running time: O(n) because it must traverse all entries in bucket"""
@@ -14,7 +14,7 @@ class TheGodSet(object):
     Best case running time: O(1) because it is first in hash table, or else shares with no other items
     Worst case running time: O(n) because all items are clustered somehow in just one hash"""
     def add(self, key, item):
-        if self.contains == False:
+        if self.contains == None:
             self.set.set(key, item)
             self.size += 1
 
@@ -33,6 +33,8 @@ class TheGodSet(object):
 
 
     """Intersection() is where two sets collide, seeing where two sets have common interests... er, elements
+    For the sake of simplicity, we're assuming each unique key will have the same value,
+    even if the key is in both sets. This assumption will also be the case in all functions below
     Best and worst case running time: O(n) because all elements must be traversed in both sets"""
     def intersection(self, set2):
         if self.size > set2.size:
@@ -42,24 +44,27 @@ class TheGodSet(object):
         common_set = TheGodSet(new_size * 2) #Preparing for all common entries, doubling larger set
         for i in set2.set.keys():
             if self.contains(i) == True:
-                common_set.add(i)
+                v = self.get(i)
+                common_set.add(i,v)
         return common_set
 
     """Union() joins two sets in unholy matromony, till deletion do they part, adding all unique elements
     Best and worst case running time: O(n) because it must traverse all entries in both sets"""
     def union(self, set2):
         union_set = TheGodSet((self.size + set2.size)*2) #Prepares for union having no duplicates
-        for i in self.set.values():
-            union_set.add(i)
-        for z in set2.set.values():
-            union_set.add(z)
+        for i in self.set.keys():
+            v = self.get(i)
+            union_set.add(i,v)
+        for z in set2.set.keys():
+            v = self.get(z)
+            union_set.add(z,v)
         return union_set
 
     """Is_Subset() checks to see if there might be a small subset growing insight one of the sets,
     with elements shared by the other set
     Best case and worst case running time: O(m) where m is the subset that must be checked"""
     def is_subset(self, subset):
-        for i in subset.set.values():
+        for i in subset.set.keys():
             if self.contains(i) == False:
                 return False
         return True
@@ -68,10 +73,12 @@ class TheGodSet(object):
     Best and worst case running time: O(n) because it must traverse both sets completely"""
     def difference(self, set2):
         different_set = TheGodSet((self.size + set2.size)*2) #Preparing for both sets being totally different
-        for i in self.set.values():
+        for i in self.set.keys():
             if set2.contains(i) == False:
-                different_set.add(i)
-        for z in set2.set.values():
+                v = self.get(i)
+                different_set.add(i,v)
+        for z in set2.set.keys():
             if self.contains(z) == False:
-                different_set.add(z)
+                v = set2.get(z)
+                different_set.add(z,v)
         return different_set
