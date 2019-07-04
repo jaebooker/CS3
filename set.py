@@ -34,7 +34,10 @@ class TheGodSet(object):
     """Intersection() is where two sets collide, seeing where two sets have common interests... er, elements
     Best and worst case running time: O(n) because all elements must be traversed in both sets"""
     def intersection(self, set2):
-        pass
+        common_set = HashTable()
+        for i in set2:
+            if self.contains(i) == True:
+                common_set.set(i)
 
     """Union() joins two sets in unholy matromony, till deletion do they part, adding all unique elements
     Best and worst case running time: O(n) because it must traverse all entries in both sets"""

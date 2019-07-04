@@ -89,7 +89,8 @@ class BinarySearchTree(object):
         Best case running time: O(1) if it is at root
         Worst case running time: O(log)n if it is at longest branch"""
         # Find a node with the given item, if any
-        node = self._find_node_recursive(item, self.root)
+        #node = self._find_node_recursive(item, self.root)
+        node = self._find_node_iterative(item)
         # Returns the node's data if found, or None
         return node.data if node is not None else None
 
@@ -124,7 +125,8 @@ class BinarySearchTree(object):
         Best case running time: O(1), if node is at root
         Worst case running time: O(log)n if node is at end of longest branch"""
         # Start with the root node
-        node = self.root
+        if self.root != None:
+            node = self.root
         # Loop until we descend past the closest leaf node
         while node is not None:
             # Check if the given item matches the node's data
@@ -132,7 +134,7 @@ class BinarySearchTree(object):
                 # Return the found node
                 return node
             # Check if the given item is less than the node's data
-            elif node.data < item:
+            elif node.data > item:
                 # Descend to the node's left child
                 node = node.left
             # Check if the given item is greater than the node's data
