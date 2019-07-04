@@ -70,5 +70,45 @@ class TestSet(unittest.TestCase):
         assert union.contains('P') is True
         assert union.size == 8
 
+    def test_difference(self):
+        set1 = TheGodSet(8)
+        set2 = TheGodSet(8)
+        set1.add('V', 5)
+        set1.add('X', 10)
+        set1.add('I', 1)
+        set1.add('L', 1)
+        set1.add('W', 5)
+        set2.add('I', 1)
+        set2.add('V', 5)
+        set2.add('O', 10)
+        set2.add('Z', 1)
+        set2.add('P', 5)
+        different = set2.difference(set1)
+        assert different.contains('W') is True
+        assert different.contains('O') is True
+        assert different.contains('I') is False
+        assert different.contains('V') is False
+        assert different.size == 6
+
+    def test_intersection(self):
+        set1 = TheGodSet(8)
+        set2 = TheGodSet(8)
+        set1.add('I', 1)
+        set1.add('V', 5)
+        set1.add('X', 10)
+        set1.add('L', 1)
+        set1.add('W', 5)
+        set2.add('I', 1)
+        set2.add('O', 10)
+        set2.add('Z', 1)
+        set2.add('V', 5)
+        set2.add('P', 5)
+        intersection = set1.intersection(set2)
+        assert intersection.contains('I') is True
+        assert intersection.contains('V') is True
+        assert intersection.contains('L') is False
+        assert intersection.contains('P') is False
+        assert intersection.size == 2
+
 if __name__ == '__main__':
     unittest.main()
