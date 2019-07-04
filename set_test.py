@@ -30,10 +30,6 @@ class TestSet(unittest.TestCase):
         st.remove('X')
         assert st.length() == 1
         assert st.size == 1
-        # with self.assertRaises(KeyError):
-        #     st.delete('X')  # Key no longer exists
-        # with st.assertRaises(KeyError):
-        #     ht.delete('A')  # Key does not exist
 
     def test_is_subset(self):
         set1 = TheGodSet(8)
@@ -54,6 +50,25 @@ class TestSet(unittest.TestCase):
         assert set2.is_subset(set4) is True
         assert set1.is_subset(set3) is True
         assert set1.is_subset(set4) is False
+
+    def test_union(self):
+        set1 = TheGodSet(8)
+        set2 = TheGodSet(8)
+        set1.add('I', 1)
+        set1.add('V', 5)
+        set1.add('X', 10)
+        set1.add('L', 1)
+        set1.add('W', 5)
+        set2.add('I', 1)
+        set2.add('V', 5)
+        set2.add('O', 10)
+        set2.add('Z', 1)
+        set2.add('P', 5)
+        union = set2.union(set1)
+        assert union.contains('I') is True
+        assert union.contains('W') is True
+        assert union.contains('P') is True
+        assert union.size == 8
 
 if __name__ == '__main__':
     unittest.main()

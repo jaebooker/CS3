@@ -44,7 +44,7 @@ class TheGodSet(object):
         common_set = TheGodSet(new_size * 2) #Preparing for all common entries, doubling larger set
         for i in set2.set.keys():
             if self.contains(i) == True:
-                v = self.get(i)
+                v = self.set.get(i)
                 common_set.add(i,v)
         return common_set
 
@@ -53,10 +53,10 @@ class TheGodSet(object):
     def union(self, set2):
         union_set = TheGodSet((self.size + set2.size)*2) #Prepares for union having no duplicates
         for i in self.set.keys():
-            v = self.get(i)
+            v = self.set.get(i)
             union_set.add(i,v)
         for z in set2.set.keys():
-            v = self.get(z)
+            v = set2.set.get(z)
             union_set.add(z,v)
         return union_set
 
@@ -75,10 +75,10 @@ class TheGodSet(object):
         different_set = TheGodSet((self.size + set2.size)*2) #Preparing for both sets being totally different
         for i in self.set.keys():
             if set2.contains(i) == False:
-                v = self.get(i)
+                v = self.set.get(i)
                 different_set.add(i,v)
         for z in set2.set.keys():
             if self.contains(z) == False:
-                v = set2.get(z)
+                v = set2.set.get(z)
                 different_set.add(z,v)
         return different_set
