@@ -14,7 +14,7 @@ class TheGodSet(object):
     Best case running time: O(1) because it is first in hash table, or else shares with no other items
     Worst case running time: O(n) because all items are clustered somehow in just one hash"""
     def add(self, key, item):
-        if self.contains == None:
+        if self.contains(key) == False:
             self.set.set(key, item)
             self.size += 1
 
